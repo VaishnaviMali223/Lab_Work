@@ -1,0 +1,38 @@
+package com.CoreJavaPrograms;
+import java.util.Scanner;
+
+public class IncomeTaxCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter employee name: ");
+        String name = scanner.nextLine();
+        
+        System.out.print("Enter annual income: ₹");
+        double income = scanner.nextDouble();
+        
+        double tax = calculateTax(income);
+      
+        System.out.println("\nEmployee Name: " + name);
+        System.out.println("Income Tax: ₹" + tax);
+        
+        scanner.close();
+    }
+    
+    public static double calculateTax(double income) {
+        double tax = 0;
+        
+        if (income <= 250000) {
+            tax = 0;
+        } else if (income <= 500000) {
+            tax = 0.1 * (income - 250000);
+        } else if (income <= 1000000) {
+            tax = 30000 + 0.2 * (income - 500000);
+        } else {
+            tax = 50000 + 0.3 * (income - 1000000);
+        }
+        
+        return tax;
+    }
+}
